@@ -1,19 +1,14 @@
-//let titulo = document.querySelector('h1'); //titulo da pagina ou mudar o titulo
-//titulo.innerHTML = 'jogo do Número Secreto';   // titulo da pagina
-
-//let paragrafo = document.querySelector('p');   // escolher um numero de 1 a 10
-//paragrafo.innerHTML = 'Escolha um número entre 1 e 10';
 
 let listaDeNumerosSorteados = [];
 let numeroLimite = 10;
-let numeroSecreto = gerarNumeroAleatorio(); // declara a variavel para declarar a função gerarNumeroAleatorio
+let numeroSecreto = gerarNumeroAleatorio(); 
 let tentativas = 1;
 
-function exibirTextoNaTela(tag, texto){  // tag subistitui valor 'h1'
+function exibirTextoNaTela(tag, texto){  
   let campo = document.querySelector(tag);
        campo.innerHTML = texto;
   
-       // exibir voz no HTML
+    
         if ('speechSynthesis' in window) {   
             let utterance = new SpeechSynthesisUtterance(texto);
             utterance.lang = 'pt-BR'; 
@@ -25,12 +20,12 @@ function exibirTextoNaTela(tag, texto){  // tag subistitui valor 'h1'
     
        }
  function exibirMensagemInicial(){
-  exibirTextoNaTela('h1', 'Número Secreto');  // substitui valor texto
-  exibirTextoNaTela('p', 'Escolha um número de 1 a 10');  // substitui o valor chute
+  exibirTextoNaTela('h1', 'Número Secreto');  
+  exibirTextoNaTela('p', 'Escolha um número de 1 a 10');  
 
  }
 
-function verificarChute(){  // função em Java Script
+function verificarChute(){  
     let chute = document.querySelector('input').value;
     console.log(chute == numeroSecreto);
 
@@ -66,12 +61,12 @@ function verificarChute(){  // função em Java Script
 
     }
 
-    if (listaDeNumerosSorteados.includes(NumeroEscolhido)) {  // includes verifica se o elemento está na lista
+    if (listaDeNumerosSorteados.includes(NumeroEscolhido)) {  
          return gerarNumeroAleatorio();
 
  
     }else{
-        listaDeNumerosSorteados.push(NumeroEscolhido); //push pega um número aleatorio
+        listaDeNumerosSorteados.push(NumeroEscolhido); 
         console.log(listaDeNumerosSorteados);
       return NumeroEscolhido;
 
@@ -84,17 +79,17 @@ function verificarChute(){  // função em Java Script
 
  }
 
- function reiniciarJogo(){  // função para clicar no botão
+ function reiniciarJogo(){  
       numeroSecreto = gerarNumeroAleatorio();
       limparcampo();
       tentativas = 1;
-     exibirMensagemInicial();  // exibi a mensagem inicial na funcão inicial no inicio
+     exibirMensagemInicial();  
     document.getElementById('reiniciar').setAttribute('disabled',true);
   
     
  }                   
  document.getElementById('reiniciar').addEventListener('click', reiniciarJogo);
 
- document.addEventListener("DOMContentLoaded", function() {  //exibe a mensagem na tela
+ document.addEventListener("DOMContentLoaded", function() {  
     exibirMensagemInicial();
 });
